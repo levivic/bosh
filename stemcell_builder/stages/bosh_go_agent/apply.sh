@@ -10,8 +10,9 @@ cp -a $dir/assets/runit/agent $chroot/etc/sv/agent
 cp -a $dir/assets/runit/monit $chroot/etc/sv/monit
 mkdir -p $chroot/var/vcap/monit/svlog
 
-# Set up agent and monit with runit
+# Set up agent and monit with runit - rishi add golang install
 run_in_bosh_chroot $chroot "
+sudo apt-get install -y golang
 chmod +x /etc/sv/agent/run /etc/sv/agent/log/run
 rm -f /etc/service/agent
 ln -s /etc/sv/agent /etc/service/agent

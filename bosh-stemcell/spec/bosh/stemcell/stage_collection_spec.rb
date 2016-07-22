@@ -36,7 +36,6 @@ module Bosh::Stemcell
               :system_kernel_modules,
               :system_ixgbevf,
               :bosh_sysctl,
-              :bosh_limits,
               :bosh_users,
               :bosh_monit,
               :bosh_ntpdate,
@@ -49,7 +48,6 @@ module Bosh::Stemcell
               :vim_tiny,
               :cron_config,
               :escape_ctrl_alt_del,
-              :system_users,
               :bosh_audit,
             ].reject{ |s| Bosh::Stemcell::Arch.ppc64le? and s ==  :system_ixgbevf }
           )
@@ -70,7 +68,6 @@ module Bosh::Stemcell
               :system_kernel_modules,
               :system_ixgbevf,
               :bosh_sysctl,
-              :bosh_limits,
               :bosh_users,
               :bosh_monit,
               :bosh_ntpdate,
@@ -101,7 +98,6 @@ module Bosh::Stemcell
               :base_ssh,
               :system_kernel_modules,
               :bosh_sysctl,
-              :bosh_limits,
               :bosh_users,
               :bosh_monit,
               :bosh_ntpdate,
@@ -128,7 +124,7 @@ module Bosh::Stemcell
           :aws_cli,
           :logrotate_config,
           :dev_tools_config,
-        ]
+        ].reject{ |s| Bosh::Stemcell::Arch.ppc64le? and [:bosh_ruby, :bosh_micro_go].include?(s) }
       end
 
       it 'returns the correct stages' do
@@ -278,7 +274,8 @@ module Bosh::Stemcell
                 :bosh_openstack_agent_settings,
                 :bosh_clean_ssh,
                 :image_create,
-                :image_install_grub,
+                #:image_install_grub, rishi
+                :image_install_zipl,
                 :bosh_package_list
               ]
             )

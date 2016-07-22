@@ -37,7 +37,7 @@ module Bosh::Stemcell
         :aws_cli,
         :logrotate_config,
         :dev_tools_config,
-      ]
+      ].reject{ |s| Bosh::Stemcell::Arch.ppc64le? and [:bosh_ruby, :bosh_micro_go].include?(s) }
     end
 
     def build_stemcell_image_stages
@@ -104,7 +104,8 @@ module Bosh::Stemcell
         :bosh_openstack_agent_settings,
         :bosh_clean_ssh,
         :image_create,
-        :image_install_grub,
+        #:image_install_grub, rishi
+        :image_install_zipl,
       ]
     end
 
@@ -260,11 +261,11 @@ module Bosh::Stemcell
         :tty_config,
         :rsyslog_config,
         :delay_monit_start,
-        :system_grub,
+        #:system_grub, s390x
+        :system_zipl,
         :vim_tiny,
         :cron_config,
         :escape_ctrl_alt_del,
-        :system_users,
         :bosh_audit
       ].flatten.reject{ |s| Bosh::Stemcell::Arch.ppc64le? and s ==  :system_ixgbevf }
     end
@@ -285,7 +286,6 @@ module Bosh::Stemcell
     def bosh_steps
       [
         :bosh_sysctl,
-        :bosh_limits,
         :bosh_users,
         :bosh_monit,
         :bosh_ntpdate,

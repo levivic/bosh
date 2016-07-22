@@ -26,7 +26,7 @@ then
   mirror=$UBUNTU_MIRROR
 fi
 
-if [ $base_debootstrap_suite == "trusty" ]
+if [ $base_debootstrap_suite == "xenial" ]
 then
   # Older debootstrap leaves udev daemon child process when building trusty release
   # https://bugs.launchpad.net/ubuntu/+source/debootstrap/+bug/1182540
@@ -36,6 +36,9 @@ then
     url="http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.67_all.deb"
   else
     url="http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.59_all.deb"
+  if is_s390x; then
+    url="http://http.us.debian.org/debian/pool/main/d/debootstrap/debootstrap_1.0.81_all.deb"
+  fi
   fi
   wget $url -qO $downloaded_file
   dpkg -i $downloaded_file

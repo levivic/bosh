@@ -31,6 +31,9 @@ module Bosh::Stemcell
       else
         mod_name
       end
+      if Bosh::Stemcell::Arch.s390x?
+        "#{mod_name}-s390x"
+      end
     end
 
     attr_reader(

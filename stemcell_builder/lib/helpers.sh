@@ -85,3 +85,10 @@ function is_ppc64le() {
     return 1
   fi
 }
+function is_s390x() {
+  if [ `uname -m` == "s390x" ]; then
+    return 0
+  else
+    return 1
+  fi
+}

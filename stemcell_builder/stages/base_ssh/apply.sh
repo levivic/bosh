@@ -78,16 +78,7 @@ else
 
 fi
 
-cat << EOF > $chroot/etc/issue
+cat << EOF > $chroot/etc/issue.net
 Unauthorized use is strictly prohibited. All access and activity
 is subject to logging and monitoring.
 EOF
-
-cp $chroot/etc/issue{,.net}
-
-touch $chroot/etc/motd
-
-for file in $chroot/etc/{issue,issue.net,motd}; do
-    chown root:root $file
-    chmod 644 $file
-done
