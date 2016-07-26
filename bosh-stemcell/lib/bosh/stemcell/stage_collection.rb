@@ -104,7 +104,8 @@ module Bosh::Stemcell
         :bosh_openstack_agent_settings,
         :bosh_clean_ssh,
         :image_create,
-        :image_install_grub,
+        #:image_install_grub,
+	:image_install_zipl,
       ]
     end
 
@@ -260,7 +261,8 @@ module Bosh::Stemcell
         :tty_config,
         :rsyslog_config,
         :delay_monit_start,
-        :system_grub,
+        #:system_grub,
+	:image_install_zipl,
         :vim_tiny,
         :cron_config,
         :escape_ctrl_alt_del,

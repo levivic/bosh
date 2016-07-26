@@ -24,6 +24,9 @@ base_debootstrap_arch=amd64
 if is_ppc64le; then
   base_debootstrap_arch=ppc64el
 fi
+if is_s390x; then
+  base_debootstrap_arch=s390x
+fi
 
 if [ -z "${base_debootstrap_suite:-}" ]
 then

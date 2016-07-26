@@ -278,7 +278,8 @@ module Bosh::Stemcell
                 :bosh_openstack_agent_settings,
                 :bosh_clean_ssh,
                 :image_create,
-                :image_install_grub,
+                #:image_install_grub,
+		:iamge_install_zipl,
                 :bosh_package_list
               ]
             )

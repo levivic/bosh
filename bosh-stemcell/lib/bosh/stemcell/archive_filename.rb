@@ -28,6 +28,8 @@ module Bosh::Stemcell
       mod_name = definition.light? ? "light-#{base_name}" : base_name
       if Bosh::Stemcell::Arch.ppc64le?
         "#{mod_name}-ppc64le"
+      elsif Bosh::Stemcell::Arch.s390x?
+	"#{mod_name}-s390x"
       else
         mod_name
       end

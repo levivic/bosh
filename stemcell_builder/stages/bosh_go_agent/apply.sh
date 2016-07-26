@@ -12,6 +12,7 @@ mkdir -p $chroot/var/vcap/monit/svlog
 
 # Set up agent and monit with runit
 run_in_bosh_chroot $chroot "
+sudo apt-get install -y golang
 chmod +x /etc/sv/agent/run /etc/sv/agent/log/run
 rm -f /etc/service/agent
 ln -s /etc/sv/agent /etc/service/agent

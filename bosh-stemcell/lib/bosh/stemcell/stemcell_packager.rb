@@ -49,6 +49,8 @@ module Bosh
         architecture = 'x86_64'
         if Bosh::Stemcell::Arch.ppc64le?
           architecture = 'ppc64'
+	elsif Bosh::Stemcell::Arch.s390x?
+	  architecture = 's390x'
         end
 
         {
