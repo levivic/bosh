@@ -262,7 +262,7 @@ module Bosh::Stemcell
         :rsyslog_config,
         :delay_monit_start,
         #:system_grub,
-	:image_install_zipl,
+	:system_zipl,
         :vim_tiny,
         :cron_config,
         :escape_ctrl_alt_del,
